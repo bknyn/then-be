@@ -12,9 +12,24 @@
   <script src="js/main.js"></script>
 </head>
 
-<body>
+<body data-state="start">
 
-  <h1>Then be</h1>
+  <div data-panel="start">
+    <p>So something is troubling you?</p>
+    <p>Is there anything you can do about it?</p>
+    <a href="#" class="panel-change" data-target="answer-yes">yes</a>
+    <a href="#" class="panel-change" data-target="answer-no">no</a>
+  </div>
+
+  <div data-panel="answer-yes">
+    <h1>Do it.</h1>
+    <a href="#" class="panel-change" data-target="start">start over</a>
+  </div>
+
+  <div data-panel="answer-no">
+    <h1>Then be.</h1>
+    <a href="#" class="panel-change" data-target="start">start over</a>
+  </div>
 
 </body>
 

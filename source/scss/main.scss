@@ -1,3 +1,23 @@
 @import 'vendor/normalize';
 
 html, body { background-color: salmon; }
+
+
+// Proof of concept. Transitions coming soon
+body[data-state="start"] {
+  div[data-panel="start"] { display: block; }
+  div[data-panel="answer-yes"] { display: none; }
+  div[data-panel="answer-no"] { display: none; }
+}
+
+body[data-state="answer-yes"] {
+  div[data-panel="start"] { display: none; }
+  div[data-panel="answer-yes"] { display: block; }
+  div[data-panel="answer-no"] { display: none; }
+}
+
+body[data-state="answer-no"] {
+  div[data-panel="start"] { display: none; }
+  div[data-panel="answer-yes"] { display: none; }
+  div[data-panel="answer-no"] { display: block; }
+}
