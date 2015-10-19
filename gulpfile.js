@@ -1,24 +1,32 @@
-var pkg = require('./package'),
+var config = require('./build.config.js'),
+    pkg = require('./package'),
     gulp = require('gulp'),
     sass = require('gulp-sass'),
+    concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload;
 
 
 gulp.task('styles', function() {
-  return gulp.src( './source/scss/main.scss' )
+  return gulp.src(config.cssManifest)
     .pipe(sass({ style: 'expanded' }))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest(config.buildDir + '/css'));
+});
+
+gulp.task('js', function() {
+  return gulp.src(config.jsAllFiles)
+    .pipe(concat(config.jsOutput))
+    .pipe(gulp.dest(config.buildDir + '/js'));
 });
 
 gulp.task('markup', function() {
-  gulp.src('./source/index.html')
-    .pipe(gulp.dest('./dist'));
+  gulp.src(config.html)
+    .pipe(gulp.dest(config.buildDir));
 });
 
 
 gulp.task('build', function() {
-  gulp.start('markup', 'styles');
+  gulp.start('markup', 'styles', 'js');
 });
 
 gulp.task('server', ['build'], function() {
@@ -29,8 +37,9 @@ gulp.task('server', ['build'], function() {
     server: ['dist']
   });
 
-  gulp.watch('./source/index.html', ['markup', reload]);
-  gulp.watch('./source/scss/**/*', ['styles', reload]);
+  gulp.watch(config.html, ['markup', reload]);
+  gulp.watch(config.scssAllFiles, ['styles', reload]);
+  gulp.watch(config.jsAllFiles, ['js', reload]);
 });
 
 
