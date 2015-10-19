@@ -8,27 +8,37 @@
   <!-- meta tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- favicon -->
+
+  <script src="https://use.typekit.net/rmx6byd.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
   <link rel="stylesheet" href="css/main.css">
   <script src="js/main.js"></script>
 </head>
 
 <body data-state="start">
 
-  <div data-panel="start">
-    <p>So something is troubling you?</p>
-    <p>Is there anything you can do about it?</p>
-    <a href="#" class="panel-change" data-target="answer-yes">yes</a>
-    <a href="#" class="panel-change" data-target="answer-no">no</a>
+  <div class="panel" data-panel="start">
+    <div class="panel-center">
+      <p>So something is troubling you.</p>
+      <p>Is there anything you can do about it?</p>
+      <a href="#" class="cta panel-change" data-target="answer-yes">yes</a>
+      <a href="#" class="cta panel-change" data-target="answer-no">no</a>
+    </div>
   </div>
 
-  <div data-panel="answer-yes">
-    <h1>Do it.</h1>
-    <a href="#" class="panel-change" data-target="start">start over</a>
+  <div class="panel" data-panel="answer-yes">
+    <div class="panel-center">
+      <h2>Do it.</h2>
+      <a href="#" class="panel-change" data-target="start">start over</a>
+    </div>
   </div>
 
-  <div data-panel="answer-no">
-    <h1>Then be.</h1>
-    <a href="#" class="panel-change" data-target="start">start over</a>
+  <div class="panel" data-panel="answer-no">
+    <div class="panel-center">
+      <h2>Then be.</h2>
+      <a href="#" class="panel-change" data-target="start">start over</a>
+    </div>
   </div>
 
 </body>
