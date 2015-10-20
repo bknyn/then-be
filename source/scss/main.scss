@@ -6,8 +6,99 @@ html, body {
   -webkit-font-smoothing: anti-aliased;
 }
 
+// Since Typekit is loading async, this is a fix to stop the flash of unstyled text
+// It is heavy-handed, but will probably be fine for a project of such small size
+.wf-loading {
+  p { opacity: 0; }
+  a { opacity: 0; }
+}
+.wf-active {
+  p { opacity: 1.0; }
+  a { opacity: 1.0; }
+}
+
 p {
   margin: 0;
+  letter-spacing: 0.01em;
+
+  transition: opacity 0.35s ease-in-out;
+
+  &.intro {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+
+  &.question {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 42px;
+  }
+
+  &.answer {
+    font-size: 60px;
+    font-weight: 700;
+    font-style: italic;
+  }
+}
+
+a {
+  transition: opacity 0.35s ease-in-out;
+}
+
+a.back {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.45s ease-in-out 2.1s;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1.0;
+    }
+  }
+}
+
+.cta {
+  display: inline-block;
+  margin: 0 40px;
+  border: 2px solid rgba(255,255,255,0.6);
+  width: 125px;
+  height: 40px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  line-height: 40px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition: opacity 0.35s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: rgba(255,255,255,1);
+    color: #fff;
+  }
 }
 
 .panel {
@@ -17,12 +108,19 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.55s ease-in-out, visibility 0s linear 0.55s;
 }
 .panel-center {
   text-align: center;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+
+  transition: transform 0.4s ease-out;
 }
 
 div.panel[data-panel="start"] {
@@ -34,34 +132,68 @@ background: -o-linear-gradient(-45deg, rgba(118,141,141,1) 0%,rgba(210,205,189,1
 background: -ms-linear-gradient(-45deg, rgba(118,141,141,1) 0%,rgba(210,205,189,1) 37%,rgba(210,205,189,1) 65%,rgba(166,186,181,1) 100%);
 background: linear-gradient(135deg, rgba(118,141,141,1) 0%,rgba(210,205,189,1) 37%,rgba(210,205,189,1) 65%,rgba(166,186,181,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#768d8d', endColorstr='#a6bab5',GradientType=1 );
+
+  div.panel-center {
+    transform: translateY(-70%);
+  }
 }
+
 div.panel[data-panel="answer-yes"] {
   background-image: url('../img/bg-do.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  div.panel-center {
+    transform: translateY(-30%);
+  }
 }
+
 div.panel[data-panel="answer-no"] {
   background-image: url('../img/bg-be.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  div.panel-center {
+    transform: translateY(-30%);
+  }
 }
 
 
-// Proof of concept. Transitions coming soon
+// Active panels
 body[data-state="start"] {
-  div[data-panel="start"] { display: block; }
-  div[data-panel="answer-yes"] { display: none; }
-  div[data-panel="answer-no"] { display: none; }
+  div[data-panel="start"] {
+    opacity: 1.0;
+    visibility: visible;
+    transition: opacity 0.32s ease-out;
+    div.panel-center {
+      transform: translateY(-50%);
+    }
+  }
 }
 
 body[data-state="answer-yes"] {
-  div[data-panel="start"] { display: none; }
-  div[data-panel="answer-yes"] { display: block; }
-  div[data-panel="answer-no"] { display: none; }
+  div[data-panel="answer-yes"] {
+    opacity: 1.0;
+    visibility: visible;
+    transition: opacity 0.32s ease-out;
+    div.panel-center {
+      transform: translateY(-50%);
+    }
+    a.back {
+      opacity: 1.0;
+    }
+  }
+
 }
 
 body[data-state="answer-no"] {
-  div[data-panel="start"] { display: none; }
-  div[data-panel="answer-yes"] { display: none; }
-  div[data-panel="answer-no"] { display: block; }
+  div[data-panel="answer-no"] {
+    opacity: 1.0;
+    visibility: visible;
+    transition: opacity 0.32s ease-out;
+    div.panel-center {
+      transform: translateY(-50%);
+    }
+    a.back {
+      opacity: 1.0;
+    }
+  }
 }
