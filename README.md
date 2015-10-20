@@ -51,6 +51,8 @@ This will compile the templates and styles to create a static site in the *dist*
 
 `server` - This task, first, runs the `build` task and then starts BrowserSync on port 8000 (with its sights set on the *./dist* directory). It then watches for changes in the source files and runs the appropriate task.
 
+`deploy` - Using gulp-gh-pages, this task builds the site and then gets it to gh-pages
+
 `default` - Outputs the details of *package.json* to the command line.
 
 ## Next steps
