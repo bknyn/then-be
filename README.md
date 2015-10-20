@@ -47,6 +47,8 @@ This will compile the templates and styles to create a static site in the *dist*
 
 `images` - Another easy one. Moves the content of *./source/img* to *./dist/img*.
 
+`cname` - Moves the CNAME file to the *./dist* directory (for gh-pages)
+
 `build` - This runs the `markup`, `styles`, `js`, and `images` tasks.
 
 `server` - This task, first, runs the `build` task and then starts BrowserSync on port 8000 (with its sights set on the *./dist* directory). It then watches for changes in the source files and runs the appropriate task.

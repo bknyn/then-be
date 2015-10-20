@@ -31,13 +31,18 @@ gulp.task('js', function() {
 });
 
 gulp.task('images', function() {
-  gulp.src('./source/img/*')
+  gulp.src(config.allImages)
     .pipe(gulp.dest(config.buildDir + '/img'));
+});
+
+gulp.task('cname', function() {
+  gulp.src('./source/CNAME')
+    .pipe(gulp.dest(config.buildDir));
 });
 
 
 gulp.task('build', function() {
-  gulp.start('markup', 'styles', 'js', 'images');
+  gulp.start('markup', 'styles', 'js', 'images', 'cname');
 });
 
 gulp.task('server', ['build'], function() {
