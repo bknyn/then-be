@@ -35,14 +35,9 @@ gulp.task('images', function() {
     .pipe(gulp.dest(config.buildDir + '/img'));
 });
 
-gulp.task('cname', function() {
-  gulp.src('./source/CNAME')
-    .pipe(gulp.dest(config.buildDir));
-});
-
 
 gulp.task('build', function() {
-  gulp.start('markup', 'styles', 'js', 'images', 'cname');
+  gulp.start('markup', 'styles', 'js', 'images');
 });
 
 gulp.task('server', ['build'], function() {
