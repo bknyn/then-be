@@ -55,5 +55,4 @@ This will compile the templates and styles to create a static site in the *dist*
 
 ## Next steps
 - Make it responsive
-- Add autoprefixer
 - Minify css/js

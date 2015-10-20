@@ -2,6 +2,7 @@ var config = require('./build.config.js'),
     pkg = require('./package'),
     gulp = require('gulp'),
     sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload,
@@ -16,6 +17,10 @@ gulp.task('markup', function() {
 gulp.task('styles', function() {
   return gulp.src(config.cssManifest)
     .pipe(sass({ style: 'expanded' }))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(gulp.dest(config.buildDir + '/css'));
 });
 
