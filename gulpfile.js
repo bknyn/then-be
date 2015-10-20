@@ -4,7 +4,8 @@ var config = require('./build.config.js'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
-    reload = browserSync.reload;
+    reload = browserSync.reload,
+    deploy = require('gulp-gh-pages');
 
 
 gulp.task('markup', function() {
@@ -46,6 +47,11 @@ gulp.task('server', ['build'], function() {
   gulp.watch(config.scssAllFiles, ['styles', reload]);
   gulp.watch(config.jsAllFiles, ['js', reload]);
   gulp.watch(config.allImages, ['images', reload])
+});
+
+gulp.task('deploy', ['build'], function() {
+  return gulp.src('./dist/**/*')
+    .pipe(deploy());
 });
 
 
