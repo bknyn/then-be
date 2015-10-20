@@ -3,6 +3,7 @@
 module.exports = {
   buildDir: './dist',
   html: './source/index.html',
+  allImages: './source/img/**/*',
   cssManifest: './source/scss/main.scss',
   scssAllFiles: './source/scss/**/*.scss',
   jsAllFiles: [

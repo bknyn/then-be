@@ -7,6 +7,11 @@ var config = require('./build.config.js'),
     reload = browserSync.reload;
 
 
+gulp.task('markup', function() {
+  gulp.src(config.html)
+    .pipe(gulp.dest(config.buildDir));
+});
+
 gulp.task('styles', function() {
   return gulp.src(config.cssManifest)
     .pipe(sass({ style: 'expanded' }))
@@ -19,14 +24,14 @@ gulp.task('js', function() {
     .pipe(gulp.dest(config.buildDir + '/js'));
 });
 
-gulp.task('markup', function() {
-  gulp.src(config.html)
-    .pipe(gulp.dest(config.buildDir));
+gulp.task('images', function() {
+  gulp.src('./source/img/*')
+    .pipe(gulp.dest(config.buildDir + '/img'));
 });
 
 
 gulp.task('build', function() {
-  gulp.start('markup', 'styles', 'js');
+  gulp.start('markup', 'styles', 'js', 'images');
 });
 
 gulp.task('server', ['build'], function() {
@@ -40,6 +45,7 @@ gulp.task('server', ['build'], function() {
   gulp.watch(config.html, ['markup', reload]);
   gulp.watch(config.scssAllFiles, ['styles', reload]);
   gulp.watch(config.jsAllFiles, ['js', reload]);
+  gulp.watch(config.allImages, ['images', reload])
 });
 
 
