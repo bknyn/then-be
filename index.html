@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<!--
+This page is using things like jQuery, SCSS, and a custom Gulp build process
+Check it all out at: https://github.com/bknyn/then-be
+-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Then Be</title>
+  <!-- meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- favicon -->
+
+  <script src="https://use.typekit.net/rmx6byd.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+  <link rel="stylesheet" href="css/main.min.css">
+  <script src="js/main.min.js"></script>
+</head>
+
+<body data-state="start">
+
+  <div class="panel" data-panel="start">
+    <div class="panel-center">
+      <p class="intro">So something is troubling you.</p>
+      <p class="question">Is there anything you can do about it?</p>
+      <a href="#" class="cta panel-change" data-target="answer-yes">yes</a>
+      <a href="#" class="cta panel-change" data-target="answer-no">no</a>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="answer-yes">
+    <div class="panel-center">
+      <p class="answer">Do.</p>
+      <a href="#" class="panel-change back" data-target="start">start over</a>
+    </div>
+  </div>
+
+  <div class="panel" data-panel="answer-no">
+    <div class="panel-center">
+      <p class="answer">Be.</p>
+      <a href="#" class="panel-change back" data-target="start">start over</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
