@@ -2,7 +2,7 @@
 
 Interactive problem-solving flow chart website.
 
-## Requirements/Dependencies/Tech
+## Requirements
 [Node.js](https://nodejs.org/), [NPM](https://www.npmjs.com/), [Gulp](http://gulpjs.com/)
 
 ## Project Setup
