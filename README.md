@@ -58,5 +58,4 @@ This will compile the templates and styles to create a static site in the *dist*
 `default` - Outputs the details of *package.json* to the command line.
 
 ## Next steps
-- Make it responsive
 - Minify css/js
