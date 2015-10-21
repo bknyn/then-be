@@ -56,6 +56,3 @@ This will compile the templates and styles to create a static site in the *dist*
 `deploy` - Using gulp-gh-pages, this task builds the site and then gets it to gh-pages
 
 `default` - Outputs the details of *package.json* to the command line.
-
-## Next steps
-- Minify css/js

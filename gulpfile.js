@@ -1,9 +1,12 @@
 var config = require('./build.config.js'),
     pkg = require('./package'),
     gulp = require('gulp'),
+    rename = require('gulp-rename'),
+    concat = require('gulp-concat'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    concat = require('gulp-concat'),
+    minifycss = require('gulp-minify-css'),
+    uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload,
@@ -22,12 +25,18 @@ gulp.task('styles', function() {
       browsers: ['last 2 versions'],
       cascade: false
     }))
+    .pipe(gulp.dest(config.buildDir + '/css'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
     .pipe(gulp.dest(config.buildDir + '/css'));
 });
 
 gulp.task('js', function() {
   return gulp.src(config.jsAllFiles)
     .pipe(concat(config.jsOutput))
+    .pipe(gulp.dest(config.buildDir + '/js'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
     .pipe(gulp.dest(config.buildDir + '/js'));
 });
 
