@@ -20,19 +20,27 @@ html, body {
 p {
   margin: 0;
   letter-spacing: 0.01em;
+  line-height: 1.25em;
 
   transition: opacity 0.35s ease-in-out;
 
   &.intro {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 30px;
+    padding: 0 20px;
+    @media (min-width: 768px) {
+      font-size: 25px;
+    }
   }
 
   &.question {
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 42px;
+    @media (min-width: 768px) {
+      font-size: 35px;
+    }
   }
 
   &.answer {
@@ -79,7 +87,7 @@ a.back {
 
 .cta {
   display: inline-block;
-  margin: 0 40px;
+  margin: 0 10px;
   border: 2px solid rgba(255,255,255,0.6);
   width: 125px;
   height: 40px;
@@ -98,6 +106,13 @@ a.back {
   &:hover {
     border-color: rgba(255,255,255,1);
     color: #fff;
+  }
+
+  @media (min-width: 480px) {
+    margin: 0 20px;
+  }
+  @media (min-width: 768px) {
+    margin: 0 40px;
   }
 }
 
@@ -139,20 +154,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#768d8d', end
 }
 
 div.panel[data-panel="answer-yes"] {
-  background-image: url('../img/bg-do.jpg');
+  background-image: url('../img/bg-sm-do.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   div.panel-center {
     transform: translateY(-30%);
+  }
+  @media (min-width: 480px) {
+    background-image: url('../img/bg-do.jpg');
   }
 }
 
 div.panel[data-panel="answer-no"] {
-  background-image: url('../img/bg-be.jpg');
+  background-image: url('../img/bg-sm-be.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   div.panel-center {
     transform: translateY(-30%);
+  }
+  @media (min-width: 480px) {
+    background-image: url('../img/bg-be.jpg');
   }
 }
 
