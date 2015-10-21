@@ -372,15 +372,23 @@ html, body {
 p {
   margin: 0;
   letter-spacing: 0.01em;
+  line-height: 1.25em;
   transition: opacity 0.35s ease-in-out; }
   p.intro {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400;
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    padding: 0 20px; }
+    @media (min-width: 768px) {
+      p.intro {
+        font-size: 25px; } }
   p.question {
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 42px; }
+    @media (min-width: 768px) {
+      p.question {
+        font-size: 35px; } }
   p.answer {
     font-size: 60px;
     font-weight: 700;
@@ -415,7 +423,7 @@ a.back {
 
 .cta {
   display: inline-block;
-  margin: 0 40px;
+  margin: 0 10px;
   border: 2px solid rgba(255, 255, 255, 0.6);
   width: 125px;
   height: 40px;
@@ -432,6 +440,12 @@ a.back {
   .cta:hover {
     border-color: white;
     color: #fff; }
+  @media (min-width: 480px) {
+    .cta {
+      margin: 0 20px; } }
+  @media (min-width: 768px) {
+    .cta {
+      margin: 0 40px; } }
 
 .panel {
   display: block;
@@ -462,20 +476,28 @@ div.panel[data-panel="start"] {
     transform: translateY(-70%); }
 
 div.panel[data-panel="answer-yes"] {
-  background-image: url("../img/bg-do.jpg");
+  background-image: url("../img/bg-sm-do.jpg");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-position: center; }
   div.panel[data-panel="answer-yes"] div.panel-center {
     -webkit-transform: translateY(-30%);
     transform: translateY(-30%); }
+  @media (min-width: 480px) {
+    div.panel[data-panel="answer-yes"] {
+      background-image: url("../img/bg-do.jpg"); } }
 
 div.panel[data-panel="answer-no"] {
-  background-image: url("../img/bg-be.jpg");
+  background-image: url("../img/bg-sm-be.jpg");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-position: center; }
   div.panel[data-panel="answer-no"] div.panel-center {
     -webkit-transform: translateY(-30%);
     transform: translateY(-30%); }
+  @media (min-width: 480px) {
+    div.panel[data-panel="answer-no"] {
+      background-image: url("../img/bg-be.jpg"); } }
 
 body[data-state="start"] div[data-panel="start"] {
   opacity: 1.0;
