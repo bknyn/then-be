@@ -45,7 +45,7 @@ This will compile the templates and styles to create a static site in the *dist*
 
 `js` - Concats the .js files into one main.js file and places that file in *./dist/js*
 
-`images` - Another easy one. Moves the content of *./source/img* to *./dist/img*.
+`images` - Runs the images in *./source/img* through gulp-imagemin and moves them to *./dist/img*.
 
 `cname` - Moves the CNAME file to the *./dist* directory (for gh-pages)
 

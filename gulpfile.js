@@ -4,6 +4,7 @@ var config = require('./build.config.js'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
+    imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload,
     deploy = require('gulp-gh-pages');
@@ -32,6 +33,9 @@ gulp.task('js', function() {
 
 gulp.task('images', function() {
   gulp.src(config.allImages)
+    .pipe(imagemin({
+        progressive: true
+    }))
     .pipe(gulp.dest(config.buildDir + '/img'));
 });
 
