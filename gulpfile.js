@@ -14,7 +14,7 @@ var config = require('./build.config.js'),
 
 
 gulp.task('markup', function() {
-  gulp.src(config.html)
+  return gulp.src(config.html)
     .pipe(gulp.dest(config.buildDir));
 });
 
@@ -41,11 +41,16 @@ gulp.task('js', function() {
 });
 
 gulp.task('images', function() {
-  gulp.src(config.allImages)
+  return gulp.src(config.allImages)
     .pipe(imagemin({
         progressive: true
     }))
     .pipe(gulp.dest(config.buildDir + '/img'));
+});
+
+gulp.task('cname', function() {
+  return gulp.src('./source/CNAME')
+    .pipe(gulp.dest(config.buildDir));
 });
 
 
@@ -67,7 +72,7 @@ gulp.task('server', ['build'], function() {
   gulp.watch(config.allImages, ['images', reload])
 });
 
-gulp.task('deploy', ['build'], function() {
+gulp.task('deploy', ['build', 'cname'], function() {
   return gulp.src('./dist/**/*')
     .pipe(deploy());
 });
