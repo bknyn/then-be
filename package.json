@@ -5,7 +5,7 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:bknyn/then-be.git"
-  }
+  },
   "main": "index.js",
   "scripts": {
     "start": "gulp server",
